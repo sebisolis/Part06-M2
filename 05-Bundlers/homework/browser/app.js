@@ -1,7 +1,12 @@
-(function () {
+// (function () {
+  /*--E6--
+  import whiteboard from './whiteboard';
+  import socket from './socket.io-client'
+  */
 
-  var whiteboard = window.whiteboard;
-  var socket = window.io(window.location.origin);
+  //--COMMON JS--//
+  const socket = require('socket.io-client')
+  const whiteboard = require('./whiteboard')
 
   socket.on('connect', function () {
     console.log('Connected!');
@@ -26,4 +31,4 @@
     socket.emit('draw', start, end, color);
   });
 
-})();
+// })();

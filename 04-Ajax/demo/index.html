@@ -8,24 +8,26 @@
 </head>
 
 <body>
-  <div id='respuesta'>
-  </div>
-  <button class='boton'>AJAX!</button>
+  <div id='respuesta'></div>
+  <button id='btnLoad'>AJAX!</button>
   <script type="text/javascript">
-    var index = 1;
-    $('.boton').click(function () {
-      // GET AJAX
-      $.get("https://jsonplaceholder.typicode.com/photos/" + index, function (data) {
-        // vanilla javascript
-        var img = document.createElement('img');
-        img.src = dataAca.url;
-        var title = document.createElement('h3');
-        title.textContent = dataAca.title;
-        $('#respuesta').append(img);
-        $('#respuesta').append(title);
-        index++;
-      });
+    let id = 1
+    $('#btnLoad')[0].addEventListener('click',(e) => {
+      $.get(`https://jsonplaceholder.typicode.com/photos/${id}`, response => {
+        console.log('SOY LA RESPONSE', response)
 
+        const {title, url} = response
+
+        let h2 = document.createElement('h2');
+        h2.innerText = title;
+
+        let image = document.createElement('img');
+        image.src = url;
+
+        $('#respuesta').append(h2)
+        $('#respuesta').append(image)
+        id++
+      });
     });
   </script>
 </body>

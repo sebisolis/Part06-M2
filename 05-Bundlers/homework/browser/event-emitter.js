@@ -1,9 +1,12 @@
-(function () {
+// (function () {
 
-  window.EventEmitter = EventEmitter;
-
-  // our EventEmitter constructor function
+  /* our EventEmitter constructor function
   function EventEmitter () {
+    this.subscribers = {};
+  } */
+
+  //--ES6--//
+  export default function EventEmitter () {
     this.subscribers = {};
   }
 
@@ -43,4 +46,6 @@
 
   };
 
-})();
+// })();
+
+module.exports = EventEmitter;
